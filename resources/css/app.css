@@ -1,0 +1,189 @@
+@import 'tailwindcss';
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=VT323&display=swap');
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+  --font-retro: 'Press Start 2P', system-ui, monospace;
+  --font-mono: 'Share Tech Mono', monospace;
+  --font-crt: 'VT323', monospace;
+  
+  --color-retro-bg: #0b0914;
+  --color-retro-card: #151125;
+  --color-retro-card-light: #201b35;
+  
+  --color-ps-blue: #003087;
+  --color-ps-light-blue: #00a4e4;
+  --color-retro-cyan: #00f0ff;
+  --color-retro-pink: #ff007f;
+  --color-retro-yellow: #ffea00;
+  --color-retro-green: #39ff14;
+}
+
+/* Custom Retro Styles */
+body {
+  background-color: var(--color-retro-bg);
+  color: #e5e7eb;
+  font-family: 'Share Tech Mono', monospace;
+  overflow-x: hidden;
+}
+
+/* CRT Screen Effect */
+.crt::after {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 9999;
+  background-size: 100% 4px, 6px 100%;
+  pointer-events: none;
+}
+
+.crt-flicker {
+  animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.98; }
+  50% { opacity: 1; }
+  100% { opacity: 0.99; }
+}
+
+/* Retro Glowing Text */
+.glow-pink {
+  text-shadow: 0 0 5px var(--color-retro-pink), 0 0 15px var(--color-retro-pink);
+}
+
+.glow-cyan {
+  text-shadow: 0 0 5px var(--color-retro-cyan), 0 0 15px var(--color-retro-cyan);
+}
+
+.glow-green {
+  text-shadow: 0 0 5px var(--color-retro-green), 0 0 15px var(--color-retro-green);
+}
+
+.glow-yellow {
+  text-shadow: 0 0 5px var(--color-retro-yellow), 0 0 15px var(--color-retro-yellow);
+}
+
+/* Retro Borders & Shadows */
+.retro-border-cyan {
+  border: 3px solid var(--color-retro-cyan);
+  box-shadow: 4px 4px 0px 0px var(--color-retro-pink);
+  transition: all 0.15s ease-in-out;
+}
+
+.retro-border-cyan:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px var(--color-retro-pink);
+}
+
+.retro-border-pink {
+  border: 3px solid var(--color-retro-pink);
+  box-shadow: 4px 4px 0px 0px var(--color-retro-cyan);
+  transition: all 0.15s ease-in-out;
+}
+
+.retro-border-pink:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px var(--color-retro-cyan);
+}
+
+.retro-border-green {
+  border: 3px solid var(--color-retro-green);
+  box-shadow: 4px 4px 0px 0px var(--color-retro-yellow);
+}
+
+.retro-card {
+  background-color: var(--color-retro-card);
+  border: 2px solid #2e2652;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* PlayStation Controller Buttons UI */
+.btn-triangle {
+  background-color: #1a3322;
+  border: 2px solid var(--color-retro-green);
+  color: var(--color-retro-green);
+}
+.btn-triangle:hover {
+  background-color: var(--color-retro-green);
+  color: #0b0914;
+}
+
+.btn-circle {
+  background-color: #3b1122;
+  border: 2px solid var(--color-retro-pink);
+  color: var(--color-retro-pink);
+}
+.btn-circle:hover {
+  background-color: var(--color-retro-pink);
+  color: #0b0914;
+}
+
+.btn-cross {
+  background-color: #112a45;
+  border: 2px solid var(--color-retro-cyan);
+  color: var(--color-retro-cyan);
+}
+.btn-cross:hover {
+  background-color: var(--color-retro-cyan);
+  color: #0b0914;
+}
+
+.btn-square {
+  background-color: #31183b;
+  border: 2px solid var(--color-retro-yellow);
+  color: var(--color-retro-yellow);
+}
+.btn-square:hover {
+  background-color: var(--color-retro-yellow);
+  color: #0b0914;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-retro-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #2e2652;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-retro-pink);
+}
+
+/* Retro blinking animation */
+.blink {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% { opacity: 0; }
+}
+
+/* Custom table formatting for retro */
+.retro-table th {
+  font-family: 'Press Start 2P', system-ui, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  background-color: var(--color-retro-card-light);
+  border-bottom: 2px solid #2e2652;
+  color: var(--color-retro-cyan);
+  text-align: left;
+}
+
+.retro-table td {
+  border-bottom: 1px solid #1c1736;
+}
+
+.retro-table tr:hover td {
+  background-color: rgba(255, 0, 127, 0.05);
+}
