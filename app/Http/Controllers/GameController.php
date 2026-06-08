@@ -15,8 +15,12 @@ class GameController extends Controller
             $query->where('platform', $request->platform);
         }
 
-        if ($request->filled('genre')) {
-            $query->where('genre', 'like', '%' . $request->genre . '%');
+        if ($request->filled('q')) {
+            $q = $request->q;
+            $query->where(function($sub) use ($q) {
+                $sub->where('title', 'like', '%' . $q . '%')
+                    ->orWhere('genre', 'like', '%' . $q . '%');
+            });
         }
 
         $games = $query->orderBy('title')->get();

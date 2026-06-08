@@ -7,10 +7,10 @@
     <title>@yield('title', 'RETRO PS RENTAL') - ARCHIVE v1.0</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="min-h-screen bg-retro-bg crt crt-flicker flex flex-col font-mono text-gray-200">
+<body class="min-h-screen bg-retro-bg flex flex-col font-sans text-slate-100">
 
     <!-- Header Navigation -->
-    <header class="border-b-4 border-double border-purple-900 bg-retro-card shadow-lg sticky top-0 z-50">
+    <header class="border-b border-slate-700 bg-retro-card shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <!-- Logo -->
@@ -71,8 +71,8 @@
             </div>
             
             <!-- Mobile Navigation -->
-            <div class="md:hidden flex justify-around border-t border-purple-900/50 py-2">
-                <a href="{{ route('dashboard') }}" class="text-xs {{ Request::is('/') ? 'text-retro-cyan font-bold' : 'text-gray-400' }}">
+            <div class="md:hidden flex justify-around border-t border-gray-200 py-2">
+                <a href="{{ route('dashboard') }}" class="text-xs {{ Request::is('/') ? 'font-semibold text-slate-900' : 'text-gray-500' }}">
                     Dash
                 </a>
                 <a href="{{ route('consoles.index') }}" class="text-xs {{ Request::is('consoles*') ? 'text-retro-green font-bold' : 'text-gray-400' }}">
@@ -95,18 +95,18 @@
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <!-- Status Messages -->
         @if(session('success'))
-            <div class="mb-6 p-4 bg-emerald-950/80 border-2 border-retro-green text-retro-green rounded shadow-[0_0_10px_rgba(57,255,20,0.2)] font-mono text-sm flex items-center justify-between">
+            <div class="mb-6 p-4 bg-emerald-100 border border-emerald-200 text-emerald-900 rounded shadow-sm font-sans text-sm flex items-center justify-between">
                 <div>
-                    <span class="font-retro mr-2" style="font-size: 0.65rem;">[OK]</span>
+                    <span class="mr-2 text-xs uppercase tracking-[0.15em] text-emerald-700">[OK]</span>
                     {{ session('success') }}
                 </div>
-                <span class="text-xs animate-pulse font-retro">▲</span>
+                <span class="text-xs text-emerald-700">✓</span>
             </div>
         @endif
 
         @if($errors->any())
-            <div class="mb-6 p-4 bg-rose-950/80 border-2 border-retro-pink text-retro-pink rounded shadow-[0_0_10px_rgba(255,0,127,0.2)] font-mono text-sm">
-                <div class="font-retro mb-2" style="font-size: 0.65rem;">[SYSTEM EXCEPTION DETECTED]</div>
+            <div class="mb-6 p-4 bg-rose-100 border border-rose-200 text-rose-900 rounded shadow-sm font-sans text-sm">
+                <div class="mb-2 text-xs uppercase tracking-[0.15em] text-rose-600">[SYSTEM EXCEPTION DETECTED]</div>
                 <ul class="list-disc list-inside space-y-1">
                     @foreach($errors->all() as $error)
                         <li>{{ $error }}</li>

@@ -34,12 +34,12 @@
             </select>
         </div>
         <div>
-            <label for="genre" class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.55rem;">
-                Search Genre
+            <label for="q" class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.55rem;">
+                Search Game
             </label>
-            <input type="text" name="genre" id="genre" value="{{ request('genre') }}"
+            <input type="text" name="q" id="q" value="{{ request('q') }}"
                    class="w-full bg-retro-bg border border-purple-900 rounded p-2 text-sm focus:outline-none text-gray-300"
-                   placeholder="e.g. Sports, Action">
+                   placeholder="Search by title or genre">
         </div>
         <div class="flex space-x-2">
             <button type="submit" class="flex-grow bg-purple-950 border border-retro-cyan hover:bg-retro-cyan hover:text-black py-2 rounded text-xs font-retro cursor-pointer">

@@ -6,7 +6,7 @@
     <title>SYSTEM LOCK - RETRO PS RENTAL</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="min-h-screen bg-retro-bg crt crt-flicker flex items-center justify-center font-mono text-gray-200 p-4">
+<body class="min-h-screen bg-retro-bg flex items-center justify-center font-sans text-slate-100 p-4">
 
     <div class="max-w-md w-full">
         <!-- Brand Header -->
@@ -20,7 +20,7 @@
         </div>
 
         <!-- Login Card -->
-        <div class="retro-card retro-border-cyan p-8 rounded-lg">
+        <div class="retro-card p-8 rounded-lg border-l-retro-cyan">
             <div class="text-center mb-6">
                 <span class="inline-block px-3 py-1 bg-purple-950 text-retro-yellow text-xs font-retro tracking-widest animate-pulse" style="font-size: 0.6rem;">
                     INSERT CREDENTIALS TO BOOT

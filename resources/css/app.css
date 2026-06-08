@@ -1,189 +1,214 @@
 @import 'tailwindcss';
 
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 
 @theme {
-  --font-retro: 'Press Start 2P', system-ui, monospace;
-  --font-mono: 'Share Tech Mono', monospace;
-  --font-crt: 'VT323', monospace;
-  
-  --color-retro-bg: #0b0914;
-  --color-retro-card: #151125;
-  --color-retro-card-light: #201b35;
-  
-  --color-ps-blue: #003087;
-  --color-ps-light-blue: #00a4e4;
-  --color-retro-cyan: #00f0ff;
-  --color-retro-pink: #ff007f;
-  --color-retro-yellow: #ffea00;
-  --color-retro-green: #39ff14;
+  --font-main: 'Share Tech Mono', ui-sans-serif, system-ui, sans-serif;
+  --color-bg: #0f172a;
+  --color-surface: #111827;
+  --color-surface-soft: #1e293b;
+  --color-border: #334155;
+  --color-text: #e2e8f0;
+  --color-muted: #94a3b8;
+  --color-primary: #38bdf8;
+  --color-accent: #818cf8;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-danger: #fb923c;
 }
 
-/* Custom Retro Styles */
 body {
-  background-color: var(--color-retro-bg);
-  color: #e5e7eb;
-  font-family: 'Share Tech Mono', monospace;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-main);
   overflow-x: hidden;
 }
 
-/* CRT Screen Effect */
-.crt::after {
-  content: " ";
-  display: block;
-  position: fixed;
-  top: 0; left: 0; bottom: 0; right: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-  z-index: 9999;
-  background-size: 100% 4px, 6px 100%;
-  pointer-events: none;
-}
-
+.crt::after,
 .crt-flicker {
-  animation: flicker 0.15s infinite;
+  display: none;
+  animation: none;
 }
 
-@keyframes flicker {
-  0% { opacity: 0.98; }
-  50% { opacity: 1; }
-  100% { opacity: 0.99; }
-}
-
-/* Retro Glowing Text */
-.glow-pink {
-  text-shadow: 0 0 5px var(--color-retro-pink), 0 0 15px var(--color-retro-pink);
-}
-
-.glow-cyan {
-  text-shadow: 0 0 5px var(--color-retro-cyan), 0 0 15px var(--color-retro-cyan);
-}
-
-.glow-green {
-  text-shadow: 0 0 5px var(--color-retro-green), 0 0 15px var(--color-retro-green);
-}
-
+.glow-pink,
+.glow-cyan,
+.glow-green,
 .glow-yellow {
-  text-shadow: 0 0 5px var(--color-retro-yellow), 0 0 15px var(--color-retro-yellow);
+  text-shadow: none;
 }
 
-/* Retro Borders & Shadows */
-.retro-border-cyan {
-  border: 3px solid var(--color-retro-cyan);
-  box-shadow: 4px 4px 0px 0px var(--color-retro-pink);
-  transition: all 0.15s ease-in-out;
-}
-
-.retro-border-cyan:hover {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0px 0px var(--color-retro-pink);
-}
-
-.retro-border-pink {
-  border: 3px solid var(--color-retro-pink);
-  box-shadow: 4px 4px 0px 0px var(--color-retro-cyan);
-  transition: all 0.15s ease-in-out;
-}
-
-.retro-border-pink:hover {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0px 0px var(--color-retro-cyan);
-}
-
+.retro-border-cyan,
+.retro-border-pink,
 .retro-border-green {
-  border: 3px solid var(--color-retro-green);
-  box-shadow: 4px 4px 0px 0px var(--color-retro-yellow);
+  border-width: 1px;
+  border-style: solid;
+  box-shadow: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .retro-card {
-  background-color: var(--color-retro-card);
-  border: 2px solid #2e2652;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  border-radius: 1rem;
 }
 
-/* PlayStation Controller Buttons UI */
-.btn-triangle {
-  background-color: #1a3322;
-  border: 2px solid var(--color-retro-green);
-  color: var(--color-retro-green);
+.btn-triangle,
+.btn-circle,
+.btn-cross,
+.btn-square {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1rem;
+  font-size: 0.82rem;
+  border-radius: 0.9rem;
+  border: 1px solid transparent;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
-.btn-triangle:hover {
-  background-color: var(--color-retro-green);
-  color: #0b0914;
+
+.btn-triangle {
+  background-color: #1e293b;
+  border-color: rgba(56, 189, 248, 0.35);
+  color: var(--color-primary);
 }
 
 .btn-circle {
-  background-color: #3b1122;
-  border: 2px solid var(--color-retro-pink);
-  color: var(--color-retro-pink);
-}
-.btn-circle:hover {
-  background-color: var(--color-retro-pink);
-  color: #0b0914;
+  background-color: #111827;
+  border-color: rgba(251, 146, 60, 0.25);
+  color: var(--color-danger);
 }
 
 .btn-cross {
-  background-color: #112a45;
-  border: 2px solid var(--color-retro-cyan);
-  color: var(--color-retro-cyan);
-}
-.btn-cross:hover {
-  background-color: var(--color-retro-cyan);
-  color: #0b0914;
+  background-color: #111827;
+  border-color: rgba(129, 140, 248, 0.3);
+  color: var(--color-accent);
 }
 
 .btn-square {
-  background-color: #31183b;
-  border: 2px solid var(--color-retro-yellow);
-  color: var(--color-retro-yellow);
-}
-.btn-square:hover {
-  background-color: var(--color-retro-yellow);
-  color: #0b0914;
+  background-color: #111827;
+  border-color: rgba(245, 158, 11, 0.35);
+  color: var(--color-warning);
 }
 
-/* Custom Scrollbar */
+.btn-triangle:hover,
+.btn-circle:hover,
+.btn-cross:hover,
+.btn-square:hover {
+  transform: translateY(-1px);
+}
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
+
 ::-webkit-scrollbar-track {
-  background: var(--color-retro-bg);
+  background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #2e2652;
-  border-radius: 4px;
+  background: rgba(107, 114, 128, 0.35);
+  border-radius: 9999px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-retro-pink);
+  background: rgba(107, 114, 128, 0.55);
 }
 
-/* Retro blinking animation */
 .blink {
-  animation: blinker 1s linear infinite;
+  animation: none;
 }
 
-@keyframes blinker {
-  50% { opacity: 0; }
-}
-
-/* Custom table formatting for retro */
 .retro-table th {
-  font-family: 'Press Start 2P', system-ui, monospace;
-  font-size: 0.65rem;
-  letter-spacing: 1px;
-  background-color: var(--color-retro-card-light);
-  border-bottom: 2px solid #2e2652;
-  color: var(--color-retro-cyan);
+  font-family: var(--font-main);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  background-color: var(--color-surface-soft);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
   text-align: left;
 }
 
 .retro-table td {
-  border-bottom: 1px solid #1c1736;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
 }
 
 .retro-table tr:hover td {
-  background-color: rgba(255, 0, 127, 0.05);
+  background-color: rgba(59, 130, 246, 0.06);
+}
+
+.text-retro-cyan,
+.text-retro-green,
+.text-retro-pink,
+.text-retro-yellow {
+  color: var(--color-text) !important;
+}
+
+.text-retro-cyan {
+  color: var(--color-primary) !important;
+}
+
+.text-retro-green {
+  color: var(--color-success) !important;
+}
+
+.text-retro-pink {
+  color: #f472b6 !important;
+}
+
+.text-retro-yellow {
+  color: var(--color-warning) !important;
+}
+
+.bg-retro-bg,
+.bg-retro-card,
+.bg-retro-card-light {
+  background-color: transparent !important;
+}
+
+.bg-retro-bg {
+  background-color: var(--color-bg) !important;
+}
+
+.bg-retro-card {
+  background-color: var(--color-surface) !important;
+}
+
+.bg-retro-card-light {
+  background-color: var(--color-surface-soft) !important;
+}
+
+.border-l-retro-green,
+.border-l-retro-yellow,
+.border-l-retro-pink,
+.border-l-retro-cyan {
+  border-left-width: 4px !important;
+}
+
+.border-l-retro-green {
+  border-left-color: rgba(34, 197, 94, 0.7) !important;
+}
+
+.border-l-retro-yellow {
+  border-left-color: rgba(245, 158, 11, 0.7) !important;
+}
+
+.border-l-retro-pink {
+  border-left-color: rgba(244, 114, 182, 0.7) !important;
+}
+
+.border-l-retro-cyan {
+  border-left-color: rgba(56, 189, 248, 0.7) !important;
+}
+
+.font-retro {
+  font-family: var(--font-main) !important;
+}
+
+.rounded {
+  border-radius: 1rem !important;
 }
