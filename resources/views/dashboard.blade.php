@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'DASHBOARD MONITORS')
+@section('title', 'BERANDA')
 
 @section('content')
 <!-- Header Stats Grid -->
@@ -10,11 +10,11 @@
     <div class="retro-card border-l-4 border-l-retro-green p-5 rounded">
         <div class="flex justify-between items-start">
             <div>
-                <p class="text-xs text-gray-400 font-retro tracking-widest uppercase mb-1" style="font-size: 0.55rem;">[STATION POWER]</p>
+                <p class="text-xs text-gray-400 font-retro tracking-widest uppercase mb-1" style="font-size: 0.55rem;">[STATUS KONSOL]</p>
                 <h3 class="text-2xl font-bold text-retro-green glow-green">{{ $consolesRented }} / {{ $consolesCount }}</h3>
                 <p class="text-xs text-gray-500 mt-2">
-                    <span class="text-retro-green">{{ $consolesAvailable }} Available</span> | 
-                    <span class="text-amber-500">{{ $consolesMaintenance }} Service</span>
+                    <span class="text-retro-green">{{ $consolesAvailable }} Tersedia</span> | 
+                    <span class="text-amber-500">{{ $consolesMaintenance }} Perawatan</span>
                 </p>
             </div>
             <div class="text-retro-green text-2xl font-retro">▲</div>
@@ -25,10 +25,10 @@
     <div class="retro-card border-l-4 border-l-retro-yellow p-5 rounded">
         <div class="flex justify-between items-start">
             <div>
-                <p class="text-xs text-gray-400 font-retro tracking-widest uppercase mb-1" style="font-size: 0.55rem;">[GAME MATRIX]</p>
+                <p class="text-xs text-gray-400 font-retro tracking-widest uppercase mb-1" style="font-size: 0.55rem;">[PERPUSTAKAAN GAME]</p>
                 <h3 class="text-2xl font-bold text-retro-yellow glow-yellow">{{ $gamesAvailable }} / {{ $gamesCount }}</h3>
                 <p class="text-xs text-gray-500 mt-2">
-                    <span class="text-retro-yellow">{{ $gamesRented }} Active Rented</span>
+                    <span class="text-retro-yellow">{{ $gamesRented }} Sedang Disewa</span>
                 </p>
             </div>
             <div class="text-retro-yellow text-2xl font-retro">■</div>
@@ -39,10 +39,10 @@
     <div class="retro-card border-l-4 border-l-retro-pink p-5 rounded">
         <div class="flex justify-between items-start">
             <div>
-                <p class="text-xs text-gray-400 font-retro tracking-widest uppercase mb-1" style="font-size: 0.55rem;">[PATRON INDEX]</p>
+                <p class="text-xs text-gray-400 font-retro tracking-widest uppercase mb-1" style="font-size: 0.55rem;">[DATA PELANGGAN]</p>
                 <h3 class="text-2xl font-bold text-retro-pink glow-pink">{{ $customersActive }} / {{ $customersCount }}</h3>
                 <p class="text-xs text-gray-500 mt-2">
-                    <span class="text-retro-pink">{{ $customersBlacklisted }} Banned</span>
+                    <span class="text-retro-pink">{{ $customersBlacklisted }} Diblokir</span>
                 </p>
             </div>
             <div class="text-retro-pink text-2xl font-retro">●</div>
@@ -56,7 +56,7 @@
                 <p class="text-xs text-gray-400 font-retro tracking-widest uppercase mb-1" style="font-size: 0.55rem;">[NET EARNINGS]</p>
                 <h3 class="text-2xl font-bold text-retro-cyan glow-cyan">Rp {{ number_format($totalRevenue, 0, ',', '.') }}</h3>
                 <p class="text-xs text-gray-500 mt-2">
-                    Active stream: <span class="text-retro-cyan">Rp {{ number_format($activeRevenue, 0, ',', '.') }}</span>
+                    Aliran aktif: <span class="text-retro-cyan">Rp {{ number_format($activeRevenue, 0, ',', '.') }}</span>
                 </p>
             </div>
             <div class="text-retro-cyan text-2xl font-retro">✖</div>
@@ -72,17 +72,17 @@
     <div class="lg:col-span-2 retro-card p-6 rounded border border-purple-900/50">
         <div class="flex items-center justify-between border-b border-purple-900/50 pb-4 mb-4">
             <h2 class="font-retro text-xs sm:text-sm text-retro-cyan glow-cyan tracking-wider">
-                [LIVE STATION MONITORS]
+                [MONITOR STASIUN]
             </h2>
             <span class="inline-block w-2.5 h-2.5 rounded-full bg-retro-green animate-pulse"></span>
         </div>
 
         @if($activeRentals->isEmpty())
             <div class="text-center py-12 border border-dashed border-purple-950 rounded bg-retro-bg/50">
-                <p class="text-gray-500 text-sm font-mono">[NO ACTIVE STATION SESSION DETECTED]</p>
-                <p class="text-gray-600 text-xs mt-2">Click below to start a new rental</p>
+                <p class="text-gray-500 text-sm font-mono">[TIDAK ADA SESI SEWA AKTIF]</p>
+                <p class="text-gray-600 text-xs mt-2">Klik untuk memulai sewa baru</p>
                 <a href="{{ route('rentals.create') }}" class="inline-block btn-cross px-4 py-2 mt-4 rounded text-xs font-retro">
-                    ✖ INITIALIZE NEW STATION
+                    ✖ BUKA SESI BARU
                 </a>
             </div>
         @else
@@ -101,14 +101,14 @@
                             </div>
                             
                             <div class="grid grid-cols-2 gap-x-4 gap-y-1 mt-2 text-xs text-gray-400">
-                                <div>Patron: <span class="text-gray-300">{{ $rental->customer->name }}</span></div>
+                                <div>Pelanggan: <span class="text-gray-300">{{ $rental->customer->name }}</span></div>
                                 <div>Serial: <span class="text-gray-300 font-mono">{{ $rental->console->serial_number }}</span></div>
-                                <div>Rate: <span class="text-retro-yellow">Rp {{ number_format($rental->console->rental_rate_per_hour, 0, ',', '.') }}/hr</span></div>
-                                <div>Games: <span class="text-retro-cyan">
+                                <div>Tarif: <span class="text-retro-yellow">Rp {{ number_format($rental->console->rental_rate_per_hour, 0, ',', '.') }}/jam</span></div>
+                                <div>Game: <span class="text-retro-cyan">
                                     @if($rental->games->isNotEmpty())
                                         {{ $rental->games->pluck('title')->implode(', ') }}
                                     @else
-                                        [Console Only]
+                                        [Hanya Konsol]
                                     @endif
                                 </span></div>
                             </div>
@@ -118,7 +118,7 @@
                         <div class="flex items-center justify-between md:justify-end space-x-4 border-t md:border-t-0 border-purple-950 pt-2 md:pt-0">
                             <!-- JS Real-time Timer -->
                             <div class="text-right">
-                                <span class="text-xs text-gray-500 block">TIME REMAINING</span>
+                                <span class="text-xs text-gray-500 block">SISA WAKTU</span>
                                 <span class="font-retro text-sm timer-display tracking-widest"
                                       data-end="{{ $rental->end_time_planned->toIso8601String() }}"
                                       data-id="{{ $rental->id }}">
@@ -131,7 +131,7 @@
                                 <a href="{{ route('rentals.show', $rental->id) }}" class="btn-triangle p-2 rounded text-xs leading-none hover:scale-105 active:scale-95 transition-transform" title="View details">
                                     ▲
                                 </a>
-                                <form action="{{ route('rentals.complete', $rental->id) }}" method="POST" onsubmit="return confirm('[SYSTEM CONFIRM]: Complete rental and return console?');">
+                                <form action="{{ route('rentals.complete', $rental->id) }}" method="POST" onsubmit="return confirm('[KONFIRMASI SISTEM]: Selesaikan sewa dan kembalikan konsol?');">
                                     @csrf
                                     <button type="submit" class="btn-circle p-2 rounded text-xs leading-none hover:scale-105 active:scale-95 transition-transform cursor-pointer" title="Return console">
                                         ●
@@ -145,7 +145,7 @@
             
             <div class="mt-4 text-right">
                 <a href="{{ route('rentals.create') }}" class="btn-cross px-4 py-2 rounded text-xs font-retro cursor-pointer">
-                    ✖ INITIALIZE NEW STATION
+                    ✖ BUKA SESI BARU
                 </a>
             </div>
         @endif
@@ -154,11 +154,11 @@
     <!-- Recent Returns (1 Column) -->
     <div class="retro-card p-6 rounded border border-purple-900/50">
         <h2 class="font-retro text-xs text-retro-yellow glow-yellow tracking-wider border-b border-purple-900/50 pb-4 mb-4">
-            [RECENT RETURNS]
+            [PENGEMBALIAN TERBARU]
         </h2>
 
         @if($completedRentals->isEmpty())
-            <p class="text-center py-12 text-gray-600 text-xs">[NO RETURN LOGS RECORDED]</p>
+            <p class="text-center py-12 text-gray-600 text-xs">[TIDAK ADA CATATAN PENGEMBALIAN]</p>
         @else
             <div class="space-y-4 max-h-[420px] overflow-y-auto pr-1">
                 @foreach($completedRentals as $rental)
@@ -171,7 +171,7 @@
                         <p class="text-gray-400 mt-1">Returned: <span class="text-gray-300 font-mono">{{ $rental->end_time_actual?->diffForHumans() }}</span></p>
                         <div class="mt-2 flex items-center justify-between border-t border-purple-950/40 pt-1.5">
                             <span class="text-retro-yellow font-bold">Rp {{ number_format($rental->total_price, 0, ',', '.') }}</span>
-                            <a href="{{ route('rentals.show', $rental->id) }}" class="text-retro-cyan hover:underline">LOGS →</a>
+                            <a href="{{ route('rentals.show', $rental->id) }}" class="text-retro-cyan hover:underline">DETAIL →</a>
                         </div>
                     </div>
                 @endforeach

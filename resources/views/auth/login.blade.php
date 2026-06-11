@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SYSTEM LOCK - RETRO PS RENTAL</title>
+    <title>LOGIN SISTEM RETRO PS</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen bg-retro-bg flex items-center justify-center font-sans text-slate-100 p-4">
@@ -15,7 +15,7 @@
                 RETRO PS
             </h1>
             <p class="font-retro text-xs text-retro-pink glow-pink tracking-widest mt-2">
-                [SYSTEM GATEWAY]
+                [GERBANG LOGIN]
             </p>
         </div>
 
@@ -23,8 +23,7 @@
         <div class="retro-card p-8 rounded-lg border-l-retro-cyan">
             <div class="text-center mb-6">
                 <span class="inline-block px-3 py-1 bg-purple-950 text-retro-yellow text-xs font-retro tracking-widest animate-pulse" style="font-size: 0.6rem;">
-                    INSERT CREDENTIALS TO BOOT
-                </span>
+                        MASUKKAN DATA LOGIN
             </div>
 
             <!-- Error Notifications -->
@@ -51,7 +50,7 @@
                 <!-- Email Address -->
                 <div>
                     <label for="email" class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.60rem;">
-                        [STAFF EMAIL]
+                        [EMAIL PETUGAS]
                     </label>
                     <input type="email" name="email" id="email" value="{{ old('email') }}" required autofocus
                            class="w-full bg-retro-bg border-2 border-purple-900 focus:border-retro-cyan rounded px-4 py-3 text-sm focus:outline-none transition-colors duration-100 placeholder-purple-900"
@@ -61,7 +60,7 @@
                 <!-- Password -->
                 <div>
                     <label for="password" class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.60rem;">
-                        [ACCESS CODE]
+                        [KATA SANDI]
                     </label>
                     <input type="password" name="password" id="password" required
                            class="w-full bg-retro-bg border-2 border-purple-900 focus:border-retro-cyan rounded px-4 py-3 text-sm focus:outline-none transition-colors duration-100 placeholder-purple-900"
@@ -72,14 +71,14 @@
                 <div class="flex items-center justify-between">
                     <label class="flex items-center cursor-pointer select-none">
                         <input type="checkbox" name="remember" class="w-4 h-4 rounded bg-retro-bg border-purple-900 text-retro-cyan focus:ring-0">
-                        <span class="ml-2 text-xs text-gray-400">Remember session</span>
+                        <span class="ml-2 text-xs text-gray-400">Ingat saya</span>
                     </label>
                 </div>
 
                 <!-- Submit Button -->
                 <div>
                     <button type="submit" class="btn-cross w-full py-3 rounded font-retro text-xs tracking-widest cursor-pointer transition-all duration-100 flex items-center justify-center space-x-2 shadow-[0_0_10px_rgba(0,240,255,0.2)]">
-                        <span>✖ RUN BOOT SEQUENCE</span>
+                        <span>✖ MASUK</span>
                     </button>
                 </div>
             </form>
@@ -87,7 +86,7 @@
 
         <!-- Help Info -->
         <div class="text-center mt-6 text-gray-600 text-xs">
-            <p>Seeded Credentials:</p>
+            <p>Contoh akun:</p>
             <p class="mt-1">Admin: <span class="text-retro-cyan">admin@retro.com</span> | Pass: <span class="text-retro-yellow">admin123</span></p>
             <p>Staff: <span class="text-retro-pink">staff@retro.com</span> | Pass: <span class="text-retro-yellow">staff123</span></p>
         </div>

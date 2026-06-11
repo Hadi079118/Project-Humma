@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'EDIT HARDWARE')
+@section('title', 'EDIT KONSOL')
 
 @section('content')
 <div class="max-w-2xl mx-auto">
     <div class="flex items-center justify-between border-b border-purple-900/50 pb-4 mb-6">
         <div>
             <h1 class="font-retro text-sm sm:text-base text-retro-green glow-green uppercase tracking-widest">
-                [EDIT CONSOLE]
+                [UBAH DATA KONSOL]
             </h1>
-            <p class="text-xs text-gray-400 mt-1">Update record parameters for Station ID: {{ $console->id }}</p>
+            <p class="text-xs text-gray-400 mt-1">Perbarui data untuk Stasiun ID: {{ $console->id }}</p>
         </div>
         <a href="{{ route('consoles.index') }}" class="btn-circle px-3 py-1.5 rounded text-xs font-retro">
-            ● BACK
+            ● KEMBALI
         </a>
     </div>
 
@@ -25,7 +25,7 @@
             <!-- Name -->
             <div>
                 <label for="name" class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.6rem;">
-                    Console Name / Station ID
+                    Nama Konsol / ID Stasiun
                 </label>
                 <input type="text" name="name" id="name" value="{{ old('name', $console->name) }}" required
                        class="w-full bg-retro-bg border-2 border-purple-900 focus:border-retro-cyan rounded px-4 py-2.5 text-sm focus:outline-none text-gray-300"
@@ -36,7 +36,7 @@
                 <!-- Platform Type -->
                 <div>
                     <label for="type" class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.6rem;">
-                        Platform Type
+                        Tipe Platform
                     </label>
                     <select name="type" id="type" required
                             class="w-full bg-retro-bg border-2 border-purple-900 focus:border-retro-cyan rounded p-2.5 text-sm focus:outline-none text-gray-300">
@@ -51,7 +51,7 @@
                 <!-- Serial Number -->
                 <div>
                     <label for="serial_number" class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.6rem;">
-                        Serial Number
+                        Nomor Seri
                     </label>
                     <input type="text" name="serial_number" id="serial_number" value="{{ old('serial_number', $console->serial_number) }}" required
                            class="w-full bg-retro-bg border-2 border-purple-900 focus:border-retro-cyan rounded px-4 py-2.5 text-sm focus:outline-none text-gray-300 font-mono"
@@ -63,7 +63,7 @@
                 <!-- Rate per Hour -->
                 <div>
                     <label for="rental_rate_per_hour" class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.6rem;">
-                        Rental Rate (Rp / Hour)
+                        Tarif Sewa (Rp / Jam)
                     </label>
                     <input type="number" name="rental_rate_per_hour" id="rental_rate_per_hour" value="{{ old('rental_rate_per_hour', $console->rental_rate_per_hour) }}" required min="0" step="500"
                            class="w-full bg-retro-bg border-2 border-purple-900 focus:border-retro-cyan rounded px-4 py-2.5 text-sm focus:outline-none text-gray-300 font-bold"
@@ -73,18 +73,18 @@
                 <!-- Status -->
                 <div>
                     <label for="status" class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.6rem;">
-                        Console Status
+                        Status Konsol
                     </label>
                     <select name="status" id="status" required
                             class="w-full bg-retro-bg border-2 border-purple-900 focus:border-retro-cyan rounded p-2.5 text-sm focus:outline-none text-gray-300"
                             {{ $console->status === 'rented' ? 'disabled' : '' }}>
-                        <option value="available" {{ old('status', $console->status) === 'available' ? 'selected' : '' }}>Available</option>
-                        <option value="rented" {{ old('status', $console->status) === 'rented' ? 'selected' : '' }}>Rented</option>
-                        <option value="maintenance" {{ old('status', $console->status) === 'maintenance' ? 'selected' : '' }}>Maintenance</option>
+                        <option value="available" {{ old('status', $console->status) === 'available' ? 'selected' : '' }}>Tersedia</option>
+                        <option value="rented" {{ old('status', $console->status) === 'rented' ? 'selected' : '' }}>Disewa</option>
+                        <option value="maintenance" {{ old('status', $console->status) === 'maintenance' ? 'selected' : '' }}>Perawatan</option>
                     </select>
                     @if($console->status === 'rented')
                         <input type="hidden" name="status" value="rented">
-                        <span class="text-xs text-retro-pink mt-1 block font-mono">[!] Status locked because console is currently active.</span>
+                        <span class="text-xs text-retro-pink mt-1 block font-mono">[!] Status dikunci karena konsol sedang aktif.</span>
                     @endif
                 </div>
             </div>
@@ -92,10 +92,10 @@
             <!-- Submit Button -->
             <div class="pt-4 border-t border-purple-900/50 flex space-x-4">
                 <button type="submit" class="btn-square flex-grow py-3 rounded font-retro text-xs tracking-widest cursor-pointer">
-                    ■ COMMIT CHANGES
+                    ■ SIMPAN PERUBAHAN
                 </button>
                 <a href="{{ route('consoles.index') }}" class="btn-circle px-6 py-3 rounded font-retro text-xs flex items-center justify-center">
-                    ● ABORT
+                    ● BATAL
                 </a>
             </div>
         </form>

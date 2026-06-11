@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'EDIT PATRON')
+@section('title', 'EDIT PELANGGAN')
 
 @section('content')
 <div class="max-w-2xl mx-auto">
     <div class="flex items-center justify-between border-b border-purple-900/50 pb-4 mb-6">
         <div>
             <h1 class="font-retro text-sm sm:text-base text-retro-pink glow-pink uppercase tracking-widest">
-                [EDIT PATRON RECORD]
+                [UBAH DATA PELANGGAN]
             </h1>
-            <p class="text-xs text-gray-400 mt-1">Modify record parameters for Patron ID: {{ $customer->id }}</p>
+            <p class="text-xs text-gray-400 mt-1">Ubah data untuk pelanggan ID: {{ $customer->id }}</p>
         </div>
         <a href="{{ route('customers.index') }}" class="btn-circle px-3 py-1.5 rounded text-xs font-retro">
-            ● BACK
+            ● KEMBALI
         </a>
     </div>
 
@@ -25,28 +25,28 @@
             <!-- Name -->
             <div>
                 <label for="name" class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.6rem;">
-                    Full Name
+                    Nama Lengkap
                 </label>
                 <input type="text" name="name" id="name" value="{{ old('name', $customer->name) }}" required
                        class="w-full bg-retro-bg border-2 border-purple-900 focus:border-retro-cyan rounded px-4 py-2.5 text-sm focus:outline-none text-gray-300"
-                       placeholder="e.g. Budi Santoso">
+                       placeholder="cth. Budi Santoso">
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Phone -->
                 <div>
                     <label for="phone" class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.6rem;">
-                        Phone Number
+                        Nomor Telepon
                     </label>
                     <input type="text" name="phone" id="phone" value="{{ old('phone', $customer->phone) }}" required
                            class="w-full bg-retro-bg border-2 border-purple-900 focus:border-retro-cyan rounded px-4 py-2.5 text-sm focus:outline-none text-gray-300 font-mono"
-                           placeholder="e.g. 08123456789">
+                           placeholder="cth. 08123456789">
                 </div>
 
                 <!-- Identity Card (KTP) -->
                 <div>
                     <label for="identity_card_number" class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.6rem;">
-                        Identity Card Number (KTP)
+                        Nomor KTP
                     </label>
                     <input type="text" name="identity_card_number" id="identity_card_number" value="{{ old('identity_card_number', $customer->identity_card_number) }}" required
                            class="w-full bg-retro-bg border-2 border-purple-900 focus:border-retro-cyan rounded px-4 py-2.5 text-sm focus:outline-none text-gray-300 font-mono"
@@ -58,22 +58,22 @@
                 <!-- Email -->
                 <div>
                     <label for="email" class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.6rem;">
-                        Email (Optional)
+                        Email (Opsional)
                     </label>
                     <input type="email" name="email" id="email" value="{{ old('email', $customer->email) }}"
                            class="w-full bg-retro-bg border-2 border-purple-900 focus:border-retro-cyan rounded px-4 py-2.5 text-sm focus:outline-none text-gray-300"
-                           placeholder="budi@example.com">
+                           placeholder="cth. budi@contoh.com">
                 </div>
 
                 <!-- Status -->
                 <div>
                     <label for="status" class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.6rem;">
-                        Patron Status
+                        Status Pelanggan
                     </label>
                     <select name="status" id="status" required
                             class="w-full bg-retro-bg border-2 border-purple-900 focus:border-retro-cyan rounded p-2.5 text-sm focus:outline-none text-gray-300">
-                        <option value="active" {{ old('status', $customer->status) === 'active' ? 'selected' : '' }}>Active</option>
-                        <option value="blacklisted" {{ old('status', $customer->status) === 'blacklisted' ? 'selected' : '' }}>Blacklisted</option>
+                        <option value="active" {{ old('status', $customer->status) === 'active' ? 'selected' : '' }}>Aktif</option>
+                        <option value="blacklisted" {{ old('status', $customer->status) === 'blacklisted' ? 'selected' : '' }}>Diblokir</option>
                     </select>
                 </div>
             </div>
@@ -81,20 +81,20 @@
             <!-- Address -->
             <div>
                 <label for="address" class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.6rem;">
-                    Residential Address
+                    Alamat Domisili
                 </label>
                 <textarea name="address" id="address" rows="3"
                           class="w-full bg-retro-bg border-2 border-purple-900 focus:border-retro-cyan rounded px-4 py-2.5 text-sm focus:outline-none text-gray-300"
-                          placeholder="e.g. Jl. Pemuda No. 12, Jakarta">{{ old('address', $customer->address) }}</textarea>
+                          placeholder="cth. Jl. Pemuda No. 12, Jakarta">{{ old('address', $customer->address) }}</textarea>
             </div>
 
             <!-- Submit Button -->
             <div class="pt-4 border-t border-purple-900/50 flex space-x-4">
                 <button type="submit" class="btn-square flex-grow py-3 rounded font-retro text-xs tracking-widest cursor-pointer">
-                    ■ COMMIT CHANGES
+                    ■ SIMPAN PERUBAHAN
                 </button>
                 <a href="{{ route('customers.index') }}" class="btn-circle px-6 py-3 rounded font-retro text-xs flex items-center justify-center">
-                    ● ABORT
+                    ● BATAL
                 </a>
             </div>
         </form>

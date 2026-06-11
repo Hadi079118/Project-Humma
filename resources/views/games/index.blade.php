@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'GAMES ARCHIVE')
+@section('title', 'DATA GAME')
 
 @section('content')
 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-purple-900/50 pb-4 mb-6">
     <div>
         <h1 class="font-retro text-sm sm:text-base text-retro-yellow glow-yellow uppercase tracking-widest">
-            [GAMES LIBRARY]
+            [PERPUSTAKAAN GAME]
         </h1>
-        <p class="text-xs text-gray-400 mt-1">Manage PS game disc catalogue and rental availability.</p>
+        <p class="text-xs text-gray-400 mt-1">Kelola katalog game PS dan ketersediaan sewa.</p>
     </div>
     <div>
         <a href="{{ route('games.create') }}" class="btn-cross px-4 py-2.5 rounded text-xs font-retro block text-center cursor-pointer">
-            ✖ REGISTER GAME
+            ✖ DAFTARKAN GAME
         </a>
     </div>
 </div>
@@ -39,14 +39,14 @@
             </label>
             <input type="text" name="q" id="q" value="{{ request('q') }}"
                    class="w-full bg-retro-bg border border-purple-900 rounded p-2 text-sm focus:outline-none text-gray-300"
-                   placeholder="Search by title or genre">
+                   placeholder="Cari judul atau genre">
         </div>
         <div class="flex space-x-2">
             <button type="submit" class="flex-grow bg-purple-950 border border-retro-cyan hover:bg-retro-cyan hover:text-black py-2 rounded text-xs font-retro cursor-pointer">
                 APPLY
             </button>
             <a href="{{ route('games.index') }}" class="bg-purple-950 border border-purple-900 hover:bg-purple-900 px-4 py-2 rounded text-xs font-retro flex items-center justify-center">
-                CLEAR
+                BERSIHKAN
             </a>
         </div>
     </form>
@@ -58,17 +58,18 @@
         <table class="w-full retro-table border-collapse">
             <thead>
                 <tr>
-                    <th class="p-4">GAME TITLE</th>
+                    <th class="p-4">JUDUL GAME</th>
                     <th class="p-4">PLATFORM</th>
                     <th class="p-4">GENRE</th>
-                    <th class="p-4">RELEASE YEAR</th>
+                    <th class="p-4">TAHUN RILIS</th>
                     <th class="p-4">STATUS</th>
-                    <th class="p-4 text-center">ACTIONS</th>
+                    <th class="p-4 text-center">AKSI</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse($games as $game)
                     <tr>
+                        
                         <td class="p-4 font-bold text-gray-200">{{ $game->title }}</td>
                         <td class="p-4">
                             <span class="px-2 py-0.5 bg-purple-950 border border-purple-900 text-xs rounded text-retro-cyan font-retro" style="font-size: 0.55rem;">
@@ -79,11 +80,11 @@
                         <td class="p-4 text-gray-400 font-mono text-sm">{{ $game->release_year ?? 'N/A' }}</td>
                         <td class="p-4">
                             @if($game->status === 'available')
-                                <span class="text-retro-green font-bold">[AVAILABLE]</span>
+                                <span class="text-retro-green font-bold">[TERSEDIA]</span>
                             @elseif($game->status === 'rented')
-                                <span class="text-retro-cyan font-bold blink">[RENTED]</span>
+                                <span class="text-retro-cyan font-bold blink">[DISWA]</span>
                             @else
-                                <span class="text-retro-pink font-bold">[LOST]</span>
+                                <span class="text-retro-pink font-bold">[HILANG]</span>
                             @endif
                         </td>
                         <td class="p-4">
@@ -91,10 +92,10 @@
                                 <a href="{{ route('games.edit', $game->id) }}" class="btn-triangle p-2 rounded text-xs leading-none hover:scale-105 active:scale-95 transition-transform" title="Edit Game">
                                     ▲
                                 </a>
-                                <form action="{{ route('games.destroy', $game->id) }}" method="POST" onsubmit="return confirm('[SYSTEM CONFIRM]: Purge game from library?');">
+                                <form action="{{ route('games.destroy', $game->id) }}" method="POST" onsubmit="return confirm('[KONFIRMASI SISTEM]: Hapus game dari katalog?');">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn-circle p-2 rounded text-xs leading-none hover:scale-105 active:scale-95 transition-transform cursor-pointer" title="Delete Game" {{ $game->status === 'rented' ? 'disabled style=opacity:0.5;cursor:not-allowed' : '' }}>
+                                    <button type="submit" class="btn-circle p-2 rounded text-xs leading-none hover:scale-105 active:scale-95 transition-transform cursor-pointer" title="Hapus Game" {{ $game->status === 'rented' ? 'disabled style=opacity:0.5;cursor:not-allowed' : '' }}>
                                         ●
                                     </button>
                                 </form>
@@ -103,7 +104,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="6" class="p-12 text-center text-gray-600">[NO GAME DISCS IN CATALOGUE]</td>
+                        <td colspan="6" class="p-12 text-center text-gray-600">[TIDAK ADA GAME TERDAFTAR]</td>
                     </tr>
                 @endforelse
             </tbody>

@@ -45,13 +45,13 @@ class CustomerController extends Controller
     {
         // Validasi input sebelum disimpan
         $request->validate([
-            'name' => 'required|string|max:255', // nama wajib
-            'phone' => 'required|string|max:20', // telepon wajib
-            'email' => 'nullable|email|max:255', // email opsional
-            'address' => 'nullable|string', // alamat opsional
+            'name' => 'nullable|string|max:255',
+            'phone' => 'nullable|string|max:20',
+            'email' => 'nullable|email|max:255',
+            'address' => 'nullable|string',
             // identity_card_number harus unik di tabel customers
-            'identity_card_number' => 'required|string|max:50|unique:customers,identity_card_number',
-            'status' => 'required|string|in:active,blacklisted', // hanya dua nilai yang valid
+            'identity_card_number' => 'nullable|string|max:50|unique:customers,identity_card_number',
+            'status' => 'nullable|string|in:active,blacklisted',
         ]);
 
         // Simpan data baru (pastikan model Customer mengizinkan mass assignment)
@@ -73,12 +73,12 @@ class CustomerController extends Controller
         // Validasi data yang diupdate. Rule unique di identity_card_number
         // mengabaikan record saat ini agar tidak error jika nilai tidak berubah
         $request->validate([
-            'name' => 'required|string|max:255',
-            'phone' => 'required|string|max:20',
+            'name' => 'nullable|string|max:255',
+            'phone' => 'nullable|string|max:20',
             'email' => 'nullable|email|max:255',
             'address' => 'nullable|string',
-            'identity_card_number' => 'required|string|max:50|unique:customers,identity_card_number,' . $customer->id,
-            'status' => 'required|string|in:active,blacklisted',
+            'identity_card_number' => 'nullable|string|max:50|unique:customers,identity_card_number,' . $customer->id,
+            'status' => 'nullable|string|in:active,blacklisted',
         ]);
 
         // Terapkan perubahan ke model

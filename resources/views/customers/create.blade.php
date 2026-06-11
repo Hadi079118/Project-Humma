@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'REGISTER PATRON')
+@section('title', 'DAFTAR PELANGGAN')
 
 @section('content')
 <div class="max-w-2xl mx-auto">
     <div class="flex items-center justify-between border-b border-purple-900/50 pb-4 mb-6">
         <div>
             <h1 class="font-retro text-sm sm:text-base text-retro-pink glow-pink uppercase tracking-widest">
-                [REGISTER PATRON]
+                [DAFTARKAN PELANGGAN]
             </h1>
-            <p class="text-xs text-gray-400 mt-1">Open a new customer file in archives.</p>
+            <p class="text-xs text-gray-400 mt-1">Buka berkas pelanggan baru di arsip.</p>
         </div>
         <a href="{{ route('customers.index') }}" class="btn-circle px-3 py-1.5 rounded text-xs font-retro">
-            ● BACK
+            ● KEMBALI
         </a>
     </div>
 
@@ -35,7 +35,7 @@
                 <!-- Phone -->
                 <div>
                     <label for="phone" class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.6rem;">
-                        Phone Number
+                        Nomor Telepon
                     </label>
                     <input type="text" name="phone" id="phone" value="{{ old('phone') }}" required
                            class="w-full bg-retro-bg border-2 border-purple-900 focus:border-retro-cyan rounded px-4 py-2.5 text-sm focus:outline-none text-gray-300 font-mono"
@@ -45,7 +45,7 @@
                 <!-- Identity Card (KTP) -->
                 <div>
                     <label for="identity_card_number" class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.6rem;">
-                        Identity Card Number (KTP)
+                        Nomor KTP
                     </label>
                     <input type="text" name="identity_card_number" id="identity_card_number" value="{{ old('identity_card_number') }}" required
                            class="w-full bg-retro-bg border-2 border-purple-900 focus:border-retro-cyan rounded px-4 py-2.5 text-sm focus:outline-none text-gray-300 font-mono"
@@ -57,7 +57,7 @@
                 <!-- Email -->
                 <div>
                     <label for="email" class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.6rem;">
-                        Email (Optional)
+                        Email (Opsional)
                     </label>
                     <input type="email" name="email" id="email" value="{{ old('email') }}"
                            class="w-full bg-retro-bg border-2 border-purple-900 focus:border-retro-cyan rounded px-4 py-2.5 text-sm focus:outline-none text-gray-300"
@@ -67,12 +67,12 @@
                 <!-- Status -->
                 <div>
                     <label for="status" class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.6rem;">
-                        Initial Status
+                        Status Awal
                     </label>
                     <select name="status" id="status" required
                             class="w-full bg-retro-bg border-2 border-purple-900 focus:border-retro-cyan rounded p-2.5 text-sm focus:outline-none text-gray-300">
-                        <option value="active" {{ old('status') === 'active' ? 'selected' : '' }}>Active</option>
-                        <option value="blacklisted" {{ old('status') === 'blacklisted' ? 'selected' : '' }}>Blacklisted</option>
+                        <option value="active" {{ old('status') === 'active' ? 'selected' : '' }}>Aktif</option>
+                        <option value="blacklisted" {{ old('status') === 'blacklisted' ? 'selected' : '' }}>Diblokir</option>
                     </select>
                 </div>
             </div>
@@ -80,7 +80,7 @@
             <!-- Address -->
             <div>
                 <label for="address" class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.6rem;">
-                    Residential Address
+                    Alamat Domisili
                 </label>
                 <textarea name="address" id="address" rows="3"
                           class="w-full bg-retro-bg border-2 border-purple-900 focus:border-retro-cyan rounded px-4 py-2.5 text-sm focus:outline-none text-gray-300"
@@ -90,10 +90,10 @@
             <!-- Submit Button -->
             <div class="pt-4 border-t border-purple-900/50 flex space-x-4">
                 <button type="submit" class="btn-square flex-grow py-3 rounded font-retro text-xs tracking-widest cursor-pointer">
-                    ■ WRITE TO REGISTRY
+                    ■ SIMPAN DATA
                 </button>
                 <a href="{{ route('customers.index') }}" class="btn-circle px-6 py-3 rounded font-retro text-xs flex items-center justify-center">
-                    ● ABORT
+                    ● BATAL
                 </a>
             </div>
         </form>

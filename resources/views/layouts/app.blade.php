@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full">
+<html lang="id" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'RETRO PS RENTAL') - ARCHIVE v1.0</title>
+    <title>@yield('title', 'PENYEWAAN PS RETRO') - ARCHIVE v1.0</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen bg-retro-bg flex flex-col font-sans text-slate-100">
@@ -29,20 +29,19 @@
                 <!-- Navigation Links -->
                 <nav class="hidden md:flex space-x-6">
                     <a href="{{ route('dashboard') }}" class="px-3 py-2 text-sm tracking-wider hover:text-retro-cyan hover:glow-cyan {{ Request::is('/') ? 'text-retro-cyan border-b-2 border-retro-cyan' : 'text-gray-400' }}">
-                        [DASHBOARD]
-                    </a>
-                    <a href="{{ route('consoles.index') }}" class="px-3 py-2 text-sm tracking-wider hover:text-retro-green hover:glow-green {{ Request::is('consoles*') ? 'text-retro-green border-b-2 border-retro-green' : 'text-gray-400' }}">
-                        [CONSOLES]
-                    </a>
-                    <a href="{{ route('games.index') }}" class="px-3 py-2 text-sm tracking-wider hover:text-retro-yellow hover:glow-yellow {{ Request::is('games*') ? 'text-retro-yellow border-b-2 border-retro-yellow' : 'text-gray-400' }}">
-                        [GAMES]
-                    </a>
-                    <a href="{{ route('customers.index') }}" class="px-3 py-2 text-sm tracking-wider hover:text-retro-pink hover:glow-pink {{ Request::is('customers*') ? 'text-retro-pink border-b-2 border-retro-pink' : 'text-gray-400' }}">
-                        [CUSTOMERS]
-                    </a>
-                    <a href="{{ route('rentals.index') }}" class="px-3 py-2 text-sm tracking-wider hover:text-retro-cyan hover:glow-cyan {{ Request::is('rentals*') ? 'text-retro-cyan border-b-2 border-retro-cyan' : 'text-gray-400' }}">
-                        [RENTALS]
-                    </a>
+                            [BERANDA]
+                        </a>
+                        <a href="{{ route('consoles.index') }}" class="px-3 py-2 text-sm tracking-wider hover:text-retro-green hover:glow-green {{ Request::is('consoles*') ? 'text-retro-green border-b-2 border-retro-green' : 'text-gray-400' }}">
+                            [KONSOL]
+                        </a>
+                        <a href="{{ route('games.index') }}" class="px-3 py-2 text-sm tracking-wider hover:text-retro-yellow hover:glow-yellow {{ Request::is('games*') ? 'text-retro-yellow border-b-2 border-retro-yellow' : 'text-gray-400' }}">
+                            [GAME]
+                        </a>
+                        <a href="{{ route('customers.index') }}" class="px-3 py-2 text-sm tracking-wider hover:text-retro-pink hover:glow-pink {{ Request::is('customers*') ? 'text-retro-pink border-b-2 border-retro-pink' : 'text-gray-400' }}">
+                            [PELANGGAN]
+                        </a>
+                        <a href="{{ route('rentals.index') }}" class="px-3 py-2 text-sm tracking-wider hover:text-retro-cyan hover:glow-cyan {{ Request::is('rentals*') ? 'text-retro-cyan border-b-2 border-retro-cyan' : 'text-gray-400' }}">
+                            [SEWA]
                 </nav>
 
                 <!-- Auth Status -->
@@ -59,12 +58,12 @@
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
                             <button type="submit" class="btn-circle px-3 py-1 text-xs rounded hover:scale-105 active:scale-95 transition-transform duration-100 font-retro tracking-widest cursor-pointer" style="font-size: 0.6rem;">
-                                ● POWER OFF
+                                ● KELUAR
                             </button>
                         </form>
                     @else
                         <a href="{{ route('login') }}" class="btn-cross px-4 py-2 rounded text-xs font-retro cursor-pointer" style="font-size: 0.6rem;">
-                            ✖ SYSTEM INITIALIZE
+                            ✖ MASUK
                         </a>
                     @endauth
                 </div>
@@ -73,19 +72,19 @@
             <!-- Mobile Navigation -->
             <div class="md:hidden flex justify-around border-t border-gray-200 py-2">
                 <a href="{{ route('dashboard') }}" class="text-xs {{ Request::is('/') ? 'font-semibold text-slate-900' : 'text-gray-500' }}">
-                    Dash
+                    Beranda
                 </a>
                 <a href="{{ route('consoles.index') }}" class="text-xs {{ Request::is('consoles*') ? 'text-retro-green font-bold' : 'text-gray-400' }}">
-                    Consoles
+                    Konsol
                 </a>
                 <a href="{{ route('games.index') }}" class="text-xs {{ Request::is('games*') ? 'text-retro-yellow font-bold' : 'text-gray-400' }}">
-                    Games
+                    Game
                 </a>
                 <a href="{{ route('customers.index') }}" class="text-xs {{ Request::is('customers*') ? 'text-retro-pink font-bold' : 'text-gray-400' }}">
-                    Cust
+                    Pelanggan
                 </a>
                 <a href="{{ route('rentals.index') }}" class="text-xs {{ Request::is('rentals*') ? 'text-retro-cyan font-bold' : 'text-gray-400' }}">
-                    Rentals
+                    Sewa
                 </a>
             </div>
         </div>
@@ -97,7 +96,7 @@
         @if(session('success'))
             <div class="mb-6 p-4 bg-emerald-100 border border-emerald-200 text-emerald-900 rounded shadow-sm font-sans text-sm flex items-center justify-between">
                 <div>
-                    <span class="mr-2 text-xs uppercase tracking-[0.15em] text-emerald-700">[OK]</span>
+                    <span class="mr-2 text-xs uppercase tracking-[0.15em] text-emerald-700">[SUKSES]</span>
                     {{ session('success') }}
                 </div>
                 <span class="text-xs text-emerald-700">✓</span>
@@ -106,7 +105,7 @@
 
         @if($errors->any())
             <div class="mb-6 p-4 bg-rose-100 border border-rose-200 text-rose-900 rounded shadow-sm font-sans text-sm">
-                <div class="mb-2 text-xs uppercase tracking-[0.15em] text-rose-600">[SYSTEM EXCEPTION DETECTED]</div>
+                <div class="mb-2 text-xs uppercase tracking-[0.15em] text-rose-600">[PESAN KESALAHAN]</div>
                 <ul class="list-disc list-inside space-y-1">
                     @foreach($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -121,10 +120,10 @@
     <!-- Footer -->
     <footer class="mt-auto border-t-4 border-double border-purple-900 bg-retro-bg py-6 text-center text-xs text-gray-500 font-mono tracking-widest">
         <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
-            <p>© 1998-2026 RETRO PLAYSTATION SYSTEM. ALL RIGHTS RESERVED.</p>
+            <p>© 1998-2026 SISTEM PENYEWAAN RETRO PLAYSTATION.</p>
             <p class="flex items-center space-x-2 mt-2 md:mt-0">
                 <span class="inline-block w-2.5 h-2.5 rounded-full bg-retro-green animate-pulse"></span>
-                <span>SYSTEM STATUS: <span class="text-retro-green glow-green">ONLINE</span></span>
+                <span>STATUS SISTEM: <span class="text-retro-green glow-green">ONLINE</span></span>
             </p>
         </div>
     </footer>

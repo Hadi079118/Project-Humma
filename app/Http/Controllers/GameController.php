@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Game;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class GameController extends Controller
 {
@@ -35,15 +36,15 @@ class GameController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|string|max:255',
+            'title' => ['required', 'string', 'max:255', Rule::unique('games', 'title')],
             'platform' => 'required|string|max:50',
             'genre' => 'nullable|string|max:100',
             'release_year' => 'nullable|integer|min:1970|max:' . (date('Y') + 2),
             'status' => 'required|string|in:available,rented,lost',
         ]);
-
-        Game::create($request->all());
-
+              'title' => ['nullable', 'string', 'max:255', Rule::unique('games', 'title')],
+              'platform' => 'nullable|string|max:50',
+              'status' => 'nullable|string|in:available,rented,lost',
         return redirect()->route('games.index')
             ->with('success', 'SYSTEM STATUS: Game added to storage.');
     }
@@ -56,15 +57,15 @@ class GameController extends Controller
     public function update(Request $request, Game $game)
     {
         $request->validate([
-            'title' => 'required|string|max:255',
+            'title' => ['required', 'string', 'max:255', Rule::unique('games', 'title')->ignore($game->id)],
             'platform' => 'required|string|max:50',
             'genre' => 'nullable|string|max:100',
             'release_year' => 'nullable|integer|min:1970|max:' . (date('Y') + 2),
             'status' => 'required|string|in:available,rented,lost',
         ]);
-
-        $game->update($request->all());
-
+              'title' => ['nullable', 'string', 'max:255', Rule::unique('games', 'title')->ignore($game->id)],
+              'platform' => 'nullable|string|max:50',
+              'status' => 'nullable|string|in:available,rented,lost',
         return redirect()->route('games.index')
             ->with('success', 'SYSTEM STATUS: Game record updated.');
     }

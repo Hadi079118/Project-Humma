@@ -48,9 +48,9 @@ class RentalController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'customer_id' => 'required|exists:customers,id',
-            'console_id' => 'required|exists:consoles,id',
-            'duration_hours' => 'required|integer|min:1|max:48',
+            'customer_id' => 'nullable|exists:customers,id',
+            'console_id' => 'nullable|exists:consoles,id',
+            'duration_hours' => 'nullable|integer|min:1|max:48',
             'game_ids' => 'nullable|array',
             'game_ids.*' => 'exists:games,id',
             'notes' => 'nullable|string',

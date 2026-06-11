@@ -31,11 +31,11 @@ class ConsoleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'type' => 'required|string|max:50',
-            'serial_number' => 'required|string|max:100|unique:consoles,serial_number',
-            'rental_rate_per_hour' => 'required|numeric|min:0',
-            'status' => 'required|string|in:available,rented,maintenance',
+              'name' => 'nullable|string|max:255',
+              'type' => 'nullable|string|max:50',
+              'serial_number' => 'nullable|string|max:100|unique:consoles,serial_number',
+              'rental_rate_per_hour' => 'nullable|numeric|min:0',
+              'status' => 'nullable|string|in:available,rented,maintenance',
         ]);
 
         Console::create($request->all());
@@ -52,11 +52,11 @@ class ConsoleController extends Controller
     public function update(Request $request, Console $console)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'type' => 'required|string|max:50',
-            'serial_number' => 'required|string|max:100|unique:consoles,serial_number,' . $console->id,
-            'rental_rate_per_hour' => 'required|numeric|min:0',
-            'status' => 'required|string|in:available,rented,maintenance',
+              'name' => 'nullable|string|max:255',
+              'type' => 'nullable|string|max:50',
+              'serial_number' => 'nullable|string|max:100|unique:consoles,serial_number,' . $console->id,
+              'rental_rate_per_hour' => 'nullable|numeric|min:0',
+              'status' => 'nullable|string|in:available,rented,maintenance',
         ]);
 
         $console->update($request->all());

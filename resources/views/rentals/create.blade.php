@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'INITIALIZE STATION SESSION')
+@section('title', 'MULAI SEWA')
 
 @section('content')
 <div class="max-w-3xl mx-auto">
     <div class="flex items-center justify-between border-b border-purple-900/50 pb-4 mb-6">
         <div>
             <h1 class="font-retro text-sm sm:text-base text-retro-cyan glow-cyan uppercase tracking-widest">
-                [CHECKOUT STATION]
+                [MULAI SEWA KONSOL]
             </h1>
-            <p class="text-xs text-gray-400 mt-1">Boot a new active rental session for a patron.</p>
+            <p class="text-xs text-gray-400 mt-1">Mulai sesi sewa baru untuk pelanggan.</p>
         </div>
         <a href="{{ route('rentals.index') }}" class="btn-circle px-3 py-1.5 rounded text-xs font-retro">
-            ● BACK
+            ● KEMBALI
         </a>
     </div>
 
@@ -25,28 +25,28 @@
                 <!-- Select Customer -->
                 <div>
                     <label for="customer_id" class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.6rem;">
-                        Select Patron
+                        Pilih Pelanggan
                     </label>
                     <select name="customer_id" id="customer_id" required
                             class="w-full bg-retro-bg border-2 border-purple-900 focus:border-retro-cyan rounded p-2.5 text-sm focus:outline-none text-gray-300">
-                        <option value="">-- Select Patron --</option>
+                        <option value="">-- Pilih Pelanggan --</option>
                         @foreach($customers as $customer)
                             <option value="{{ $customer->id }}" {{ old('customer_id') == $customer->id ? 'selected' : '' }}>
                                 {{ $customer->name }} (KTP: {{ $customer->identity_card_number }})
                             </option>
                         @endforeach
                     </select>
-                    <p class="text-xs text-gray-500 mt-1">Only active patrons are listed. Register new patrons first if missing.</p>
+                    <p class="text-xs text-gray-500 mt-1">Hanya pelanggan aktif yang ditampilkan. Daftarkan pelanggan baru terlebih dahulu jika belum ada.</p>
                 </div>
 
                 <!-- Select Console -->
                 <div>
                     <label for="console_id" class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.6rem;">
-                        Select Console Station
+                        Pilih Konsol
                     </label>
                     <select name="console_id" id="console_id" required
                             class="w-full bg-retro-bg border-2 border-purple-900 focus:border-retro-cyan rounded p-2.5 text-sm focus:outline-none text-gray-300">
-                        <option value="">-- Select Console --</option>
+                        <option value="">-- Pilih Konsol --</option>
                         @foreach($consoles as $console)
                             <option value="{{ $console->id }}" 
                                     data-rate="{{ $console->rental_rate_per_hour }}" 
@@ -56,7 +56,7 @@
                             </option>
                         @endforeach
                     </select>
-                    <p class="text-xs text-gray-500 mt-1">Only available consoles are listed.</p>
+                    <p class="text-xs text-gray-500 mt-1">Hanya konsol yang tersedia yang ditampilkan.</p>
                 </div>
             </div>
 
@@ -64,7 +64,7 @@
                 <!-- Duration Hours -->
                 <div>
                     <label for="duration_hours" class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.6rem;">
-                        Duration (Hours)
+                        Durasi (Jam)
                     </label>
                     <input type="number" name="duration_hours" id="duration_hours" value="{{ old('duration_hours', 1) }}" required min="1" max="48"
                            class="w-full bg-retro-bg border-2 border-purple-900 focus:border-retro-cyan rounded px-4 py-2.5 text-sm focus:outline-none text-gray-300 font-bold">
@@ -73,7 +73,7 @@
 
                 <!-- Price Estimator Display -->
                 <div class="bg-retro-bg border-2 border-purple-950 p-4 rounded flex flex-col justify-center">
-                    <span class="text-xs text-gray-500 block uppercase">Estimated Total Cost</span>
+                    <span class="text-xs text-gray-500 block uppercase">Estimasi Total Biaya</span>
                     <span id="price-estimate" class="text-xl font-bold text-retro-yellow glow-yellow mt-1">
                         Rp 0
                     </span>
@@ -83,7 +83,7 @@
             <!-- Games Selection -->
             <div>
                 <label class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.6rem;">
-                    Select Games to Include
+                    Pilih Game untuk Sesi
                 </label>
                 <div class="bg-retro-bg border-2 border-purple-900 rounded p-4 max-h-60 overflow-y-auto grid grid-cols-1 sm:grid-cols-2 gap-3" id="games-container">
                     @forelse($games as $game)
@@ -97,10 +97,10 @@
                             </div>
                         </label>
                     @empty
-                        <p class="text-gray-600 text-xs col-span-2 text-center">[NO AVAILABLE GAMES DISCS IN STOCK]</p>
+                        <p class="text-gray-600 text-xs col-span-2 text-center">[TIDAK ADA GAME TERSEDIA]</p>
                     @endforelse
                 </div>
-                <p class="text-xs text-gray-500 mt-1.5">[!] Game filters will update automatically once you select a console station platform.</p>
+                <p class="text-xs text-gray-500 mt-1.5">[!] Filter game akan otomatis diperbarui setelah pilih platform konsol.</p>
             </div>
 
             <!-- Notes -->
@@ -116,10 +116,10 @@
             <!-- Submit Buttons -->
             <div class="pt-4 border-t border-purple-900/50 flex space-x-4">
                 <button type="submit" class="btn-square flex-grow py-3 rounded font-retro text-xs tracking-widest cursor-pointer">
-                    ■ INITIATE SESSION
+                    ■ MULAI SESI
                 </button>
                 <a href="{{ route('rentals.index') }}" class="btn-circle px-6 py-3 rounded font-retro text-xs flex items-center justify-center">
-                    ● ABORT
+                    ● BATAL
                 </a>
             </div>
         </form>

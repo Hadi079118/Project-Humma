@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'REGISTER GAME')
+@section('title', 'DAFTAR GAME')
 
 @section('content')
 <div class="max-w-2xl mx-auto">
     <div class="flex items-center justify-between border-b border-purple-900/50 pb-4 mb-6">
         <div>
             <h1 class="font-retro text-sm sm:text-base text-retro-yellow glow-yellow uppercase tracking-widest">
-                [REGISTER GAME]
+                [DAFTARKAN GAME]
             </h1>
-            <p class="text-xs text-gray-400 mt-1">Add a new game title to inventory.</p>
+            <p class="text-xs text-gray-400 mt-1">Tambahkan judul game baru ke inventaris.</p>
         </div>
         <a href="{{ route('games.index') }}" class="btn-circle px-3 py-1.5 rounded text-xs font-retro">
-            ● BACK
+            ● KEMBALI
         </a>
     </div>
 
@@ -35,7 +35,7 @@
                 <!-- Platform -->
                 <div>
                     <label for="platform" class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.6rem;">
-                        Game Platform
+                        Platform Game
                     </label>
                     <select name="platform" id="platform" required
                             class="w-full bg-retro-bg border-2 border-purple-900 focus:border-retro-cyan rounded p-2.5 text-sm focus:outline-none text-gray-300">
@@ -54,7 +54,7 @@
                     </label>
                     <input type="text" name="genre" id="genre" value="{{ old('genre') }}"
                            class="w-full bg-retro-bg border-2 border-purple-900 focus:border-retro-cyan rounded px-4 py-2.5 text-sm focus:outline-none text-gray-300"
-                           placeholder="e.g. Sports, Fighting, Adventure">
+                           placeholder="cth. Olahraga, Fighting, Petualangan">
                 </div>
             </div>
 
@@ -62,22 +62,22 @@
                 <!-- Release Year -->
                 <div>
                     <label for="release_year" class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.6rem;">
-                        Release Year
+                        Tahun Rilis
                     </label>
                     <input type="number" name="release_year" id="release_year" value="{{ old('release_year') }}" min="1970" max="{{ date('Y') + 2 }}"
                            class="w-full bg-retro-bg border-2 border-purple-900 focus:border-retro-cyan rounded px-4 py-2.5 text-sm focus:outline-none text-gray-300 font-mono"
-                           placeholder="e.g. 2004">
+                           placeholder="cth. 2004">
                 </div>
 
                 <!-- Status -->
                 <div>
                     <label for="status" class="block text-xs font-retro text-retro-cyan uppercase tracking-wider mb-2" style="font-size: 0.6rem;">
-                        Initial Status
+                        Status Awal
                     </label>
                     <select name="status" id="status" required
                             class="w-full bg-retro-bg border-2 border-purple-900 focus:border-retro-cyan rounded p-2.5 text-sm focus:outline-none text-gray-300">
-                        <option value="available" {{ old('status') === 'available' ? 'selected' : '' }}>Available</option>
-                        <option value="lost" {{ old('status') === 'lost' ? 'selected' : '' }}>Lost</option>
+                        <option value="available" {{ old('status') === 'available' ? 'selected' : '' }}>Tersedia</option>
+                        <option value="lost" {{ old('status') === 'lost' ? 'selected' : '' }}>Hilang</option>
                     </select>
                 </div>
             </div>
@@ -85,10 +85,10 @@
             <!-- Submit Button -->
             <div class="pt-4 border-t border-purple-900/50 flex space-x-4">
                 <button type="submit" class="btn-square flex-grow py-3 rounded font-retro text-xs tracking-widest cursor-pointer">
-                    ■ WRITE TO REGISTRY
+                    ■ SIMPAN DATA
                 </button>
                 <a href="{{ route('games.index') }}" class="btn-circle px-6 py-3 rounded font-retro text-xs flex items-center justify-center">
-                    ● ABORT
+                    ● BATAL
                 </a>
             </div>
         </form>
